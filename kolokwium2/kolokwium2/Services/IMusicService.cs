@@ -9,9 +9,15 @@ namespace kolokwium2.Services
    public interface IMusicService
     {
         IQueryable<Album> GetAlbum(int IdAlbum);
-        IQueryable<Album> GetAlbumExist(int IdAlbum);
+        IQueryable<Album> GetAlbumById(int IdAlbum);
 
+        IQueryable<Musican> GetMusicanById(int IdMusican);
 
+        IQueryable<Musican> GetMusican(int IdMusican);
+
+        Task DeleteMusican(int IdMusican);
+
+        Task DeleteTrack(int IdTrack);
 
     }
 }

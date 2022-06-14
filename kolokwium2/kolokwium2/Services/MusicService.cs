@@ -24,10 +24,48 @@ namespace kolokwium2.Services
                 .Include(e => e.Track);
         }
 
-        public IQueryable<Album> GetAlbumExist(int IdAlbum)
+        public IQueryable<Album> GetAlbumById(int IdAlbum)
         {
             return _context.Album
                 .Where(e => e.IdAlbum == IdAlbum);
+        }
+
+        public IQueryable<Musican> GetMusicanById(int IdMusican)
+        {
+            return _context.Musican
+                .Where(e => e.IdMusican == IdMusican);
+        }
+
+        public IQueryable<Musican> GetMusican(int IdMusican)
+        {
+            return _context.Musican
+                .Where(e => e.IdMusican == IdMusican)
+                .Include(e => e.MusicanTrack)
+                .ThenInclude(e => e.Track);
+        }
+
+        public async Task DeleteMusican(int IdMusican)
+        {
+            var MusicanDelete = new Musican
+            {
+                IdMusican = IdMusican,
+            };
+
+            var entry = _context.Entry(MusicanDelete);
+            entry.State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteTrack(int IdTrack)
+        {
+            var TrackDelete = new Track
+            {
+                IdTrack = IdTrack,
+            };
+
+            var entry = _context.Entry(TrackDelete);
+            entry.State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
     }
 }
