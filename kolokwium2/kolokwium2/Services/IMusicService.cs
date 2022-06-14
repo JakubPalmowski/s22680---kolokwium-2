@@ -17,7 +17,7 @@ namespace kolokwium2.Services
 
         Task DeleteMusican(int IdMusican);
 
-        Task DeleteTrack(int IdTrack);
+        Task DeleteMusicanTrack(int IdTrack,int IdMusican);
 
     }
 }

@@ -56,11 +56,12 @@ namespace kolokwium2.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteTrack(int IdTrack)
+        public async Task DeleteMusicanTrack(int IdTrack,int IdMusican)
         {
-            var TrackDelete = new Track
+            var TrackDelete = new MusicanTrack
             {
                 IdTrack = IdTrack,
+                IdMusican = IdMusican
             };
 
             var entry = _context.Entry(TrackDelete);

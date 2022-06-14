@@ -58,7 +58,7 @@ namespace kolokwium2.Controllers
                     foreach (MusicanTrack track in tracks.Tracks)
                     {
                         if (track.IdMusicAlbum != null) return Conflict("ten muzyk posiada piosenke w albumie");
-                        await _service.DeleteTrack(track.IdTrack);
+                        await _service.DeleteMusicanTrack(track.IdTrack,IdMusican);
                     }
 
 
