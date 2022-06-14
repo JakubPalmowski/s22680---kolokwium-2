@@ -1,4 +1,5 @@
 using kolokwium2.DataAccess;
+using kolokwium2.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,7 @@ namespace kolokwium2
 
             services.AddControllers();
             services.AddDbContext<MusicContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddScoped<IMusicService,MusicService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "kolokwium2", Version = "v1" });
